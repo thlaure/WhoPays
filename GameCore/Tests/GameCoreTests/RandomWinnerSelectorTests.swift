@@ -1,6 +1,6 @@
 import XCTest
 
-@testable import WhoPays
+@testable import GameCore
 
 final class RandomWinnerSelectorTests: XCTestCase {
   func testEmptyCollectionHasNoWinner() {

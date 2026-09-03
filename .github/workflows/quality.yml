@@ -28,7 +28,23 @@ jobs:
       - name: Select Xcode 26.6
         run: sudo xcode-select --switch /Applications/Xcode_26.6.app/Contents/Developer
 
-      - name: Create iOS simulator and run quality checks
+      - name: Run fast quality checks
+        run: make fast-quality
+
+  ios-integration:
+    name: iOS integration
+    if: github.event_name == 'push'
+    runs-on: macos-26
+    timeout-minutes: 20
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Select Xcode 26.6
+        run: sudo xcode-select --switch /Applications/Xcode_26.6.app/Contents/Developer
+
+      - name: Create iOS simulator and run integration checks
         shell: bash
         run: |
           set -euo pipefail
@@ -58,7 +74,7 @@ jobs:
 
           xcrun simctl boot "$simulator_id"
           xcrun simctl bootstatus "$simulator_id" -b
-          make quality DESTINATION="platform=iOS Simulator,id=$simulator_id"
+          make ios-quality DESTINATION="platform=iOS Simulator,id=$simulator_id"
 
       - name: Upload test results after failure
         if: failure()

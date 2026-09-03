@@ -3,32 +3,32 @@ import Observation
 
 @MainActor
 @Observable
-final class GameSession {
-  enum Phase: Equatable {
+public final class GameSession {
+  public enum Phase: Equatable {
     case waiting
     case countingDown(deadline: Date)
     case winner(UUID)
   }
 
-  private(set) var touches: [TouchPoint] = []
-  private(set) var phase: Phase = .waiting
+  public private(set) var touches: [TouchPoint] = []
+  public private(set) var phase: Phase = .waiting
 
   private let countdownDuration: Duration
   private let winnerSelector: any WinnerSelecting
   private let winnerFeedback: any WinnerFeedbackProviding
   private var selectionTask: Task<Void, Never>?
 
-  init(
+  public init(
     countdownDuration: Duration = .seconds(2),
     winnerSelector: any WinnerSelecting = RandomWinnerSelector(),
-    winnerFeedback: any WinnerFeedbackProviding = SystemWinnerFeedback()
+    winnerFeedback: any WinnerFeedbackProviding
   ) {
     self.countdownDuration = countdownDuration
     self.winnerSelector = winnerSelector
     self.winnerFeedback = winnerFeedback
   }
 
-  func updateTouches(_ touches: [TouchPoint]) {
+  public func updateTouches(_ touches: [TouchPoint]) {
     self.touches = touches
 
     switch phase {
@@ -41,7 +41,7 @@ final class GameSession {
     }
   }
 
-  func reset() {
+  public func reset() {
     cancelCountdown()
     phase = .waiting
     updateCountdown()
@@ -68,7 +68,7 @@ final class GameSession {
         guard !Task.isCancelled else { return }
         self?.finishCountdown()
       } catch {
-        // Cancellation is the normal path when a finger leaves early.
+        // Cancellation is normal when a finger leaves early.
       }
     }
   }
@@ -93,7 +93,7 @@ final class GameSession {
 
 extension Duration {
   fileprivate var timeInterval: TimeInterval {
-    let components = self.components
+    let components = components
     return Double(components.seconds)
       + Double(components.attoseconds) / 1_000_000_000_000_000_000
   }

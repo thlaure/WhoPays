@@ -20,11 +20,13 @@ WhoPays/
 ├── WhoPays.xcodeproj/          Configuration Xcode
 ├── WhoPays/                    Code de l'application
 │   ├── App/                    Point d'entrée
-│   ├── Domain/                 Concepts et règles métier
 │   ├── Presentation/           État et vues SwiftUI
 │   ├── Infrastructure/         APIs techniques Apple
 │   └── Resources/              Traductions
-└── WhoPaysTests/               Tests automatisés
+├── GameCore/                   Package Swift local : règles du jeu
+│   ├── Sources/GameCore/
+│   └── Tests/GameCoreTests/    Tests unitaires rapides
+└── WhoPaysTests/               Tests iOS, dont les traductions
 ```
 
 Cette organisation applique une Clean Architecture légère et proportionnée à la taille du projet.
@@ -32,14 +34,14 @@ Cette organisation applique une Clean Architecture légère et proportionnée à
 ```mermaid
 flowchart TD
     App[App<br/>Point de composition] --> Presentation
-    Presentation[Presentation<br/>SwiftUI et GameSession] --> Domain
+    Presentation[Presentation<br/>SwiftUI] --> Core
+    Core[GameCore<br/>Règles et GameSession]
     Infrastructure[Infrastructure<br/>UIKit et haptiques] --> Presentation
     Resources[Resources<br/>Textes anglais et français] --> Presentation
-    Tests[WhoPaysTests] --> Domain
-    Tests --> Presentation
+    Tests[GameCoreTests] --> Core
 ```
 
-Le domaine ne connaît pas SwiftUI ni UIKit. Cela permet de comprendre et tester les règles du jeu sans dépendre de l'affichage ou du matériel.
+`GameCore` ne connaît ni SwiftUI ni UIKit. Cela permet de comprendre et tester les règles du jeu sans dépendre de l'affichage, du simulateur ou du matériel.
 
 ## Premières bases de Swift
 
@@ -666,7 +668,7 @@ iOS sélectionne automatiquement la traduction selon la langue choisie pour l'ap
 
 Les tests utilisent XCTest, le framework de tests Apple.
 
-## `WhoPaysTests/GameSessionTests.swift`
+## `GameCore/Tests/GameCoreTests/GameSessionTests.swift`
 
 Ce fichier vérifie :
 
@@ -697,7 +699,7 @@ private final class FeedbackSpy: WinnerFeedbackProviding
 
 Il ne fait pas vibrer l'appareil. Il compte combien de fois le feedback a été demandé.
 
-## `WhoPaysTests/RandomWinnerSelectorTests.swift`
+## `GameCore/Tests/GameCoreTests/RandomWinnerSelectorTests.swift`
 
 Ce fichier vérifie les limites importantes :
 
@@ -721,11 +723,7 @@ Ils détectent notamment :
 La production utilise les dépendances par défaut :
 
 ```swift
-GameSession(
-  countdownDuration: .seconds(2),
-  winnerSelector: RandomWinnerSelector(),
-  winnerFeedback: SystemWinnerFeedback()
-)
+GameSession(winnerFeedback: SystemWinnerFeedback())
 ```
 
 Les tests les remplacent :
