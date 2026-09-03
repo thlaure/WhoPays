@@ -1,6 +1,6 @@
 import XCTest
 
-@testable import WhoPays
+@testable import TabTaker
 
 final class LocalizationTests: XCTestCase {
   func testFrenchTranslationsAreComplete() {

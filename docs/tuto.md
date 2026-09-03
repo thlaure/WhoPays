@@ -2,7 +2,7 @@
 
 Ce tutoriel explique les bases de Swift, le fonctionnement de SwiftUI et l'organisation du projet TabTaker. Il est conçu pour une personne qui n'a encore jamais développé en Swift.
 
-> Le nom visible de l'application et son bundle ID sont **TabTaker** et `com.thomaslaure.tabtaker`. Les noms techniques du projet (`WhoPays.xcodeproj` et cible `WhoPays`) restent inchangés : ils ne sont pas visibles par les utilisateurs.
+> Nom visible, projet Xcode, cible et bundle ID utilisent tous **TabTaker**. Le bundle ID est `com.thomaslaure.tabtaker`.
 
 ## Vue d'ensemble
 
@@ -15,12 +15,12 @@ L'idée centrale de l'application est simple : SwiftUI décrit l'écran, `GameSe
 ## Structure générale
 
 ```text
-WhoPays/
+TabTaker/
 ├── README.md
 ├── docs/
 │   └── tuto.md
-├── WhoPays.xcodeproj/          Configuration Xcode
-├── WhoPays/                    Code de l'application
+├── TabTaker.xcodeproj/         Configuration Xcode
+├── TabTaker/                   Code de l'application
 │   ├── App/                    Point d'entrée
 │   ├── Presentation/           État et vues SwiftUI
 │   ├── Infrastructure/         APIs techniques Apple
@@ -28,7 +28,7 @@ WhoPays/
 ├── GameCore/                   Package Swift local : règles du jeu
 │   ├── Sources/GameCore/
 │   └── Tests/GameCoreTests/    Tests unitaires rapides
-└── WhoPaysTests/               Tests iOS, dont les traductions
+└── TabTakerTests/              Tests iOS, dont les traductions
 ```
 
 Cette organisation applique une Clean Architecture légère et proportionnée à la taille du projet.
@@ -88,7 +88,7 @@ Une `struct` est un type valeur. Lorsque sa valeur est copiée, la copie devient
 
 Une `class` est un type référence. Plusieurs endroits du programme peuvent observer et manipuler le même objet.
 
-WhoPays utilise :
+TabTaker utilise :
 
 - une `struct` pour représenter un doigt ;
 - une `class` pour la session partagée et observable du jeu.
@@ -277,7 +277,7 @@ L'ordre peut avoir de l'importance. Par exemple, appliquer un fond avant ou apr�
 - `HStack` empile horizontalement.
 - `ZStack` superpose les éléments.
 
-WhoPays utilise un `ZStack` afin de superposer :
+TabTaker utilise un `ZStack` afin de superposer :
 
 1. le fond noir ;
 2. la surface tactile ;
@@ -357,13 +357,13 @@ Une preview permet à Xcode d'afficher une vue sans lancer manuellement tout le 
 
 ## Explication des fichiers
 
-## `App/WhoPaysApp.swift`
+## `App/TabTakerApp.swift`
 
 C'est le point d'entrée :
 
 ```swift
 @main
-struct WhoPaysApp: App {
+struct TabTakerApp: App {
   var body: some Scene {
     WindowGroup {
       GameView()
@@ -710,7 +710,7 @@ Ce fichier vérifie les limites importantes :
 
 Un test statistique du hasard serait instable et apporterait peu de valeur.
 
-## `WhoPaysTests/LocalizationTests.swift`
+## `TabTakerTests/LocalizationTests.swift`
 
 Ces tests chargent les bundles `en.lproj` et `fr.lproj`, puis vérifient chaque traduction attendue.
 
@@ -755,7 +755,7 @@ Dans Xcode :
 
 ## Fichiers de configuration Xcode
 
-## `WhoPays.xcodeproj/project.pbxproj`
+## `TabTaker.xcodeproj/project.pbxproj`
 
 Ce fichier contient :
 
@@ -767,7 +767,7 @@ Ce fichier contient :
 
 Il est généralement modifié par Xcode. Un débutant ne devrait pas l'éditer manuellement.
 
-## `WhoPays.xcodeproj/xcshareddata/xcschemes/WhoPays.xcscheme`
+## `TabTaker.xcodeproj/xcshareddata/xcschemes/TabTaker.xcscheme`
 
 Le scheme décrit ce que Xcode doit compiler, lancer, tester, profiler ou archiver. La couverture des tests y est activée.
 
@@ -836,7 +836,7 @@ stateDiagram-v2
 
 ## Ordre conseillé pour apprendre le projet
 
-1. `App/WhoPaysApp.swift`
+1. `App/TabTakerApp.swift`
 2. `Presentation/GameView.swift`
 3. `Domain/TouchPoint.swift`
 4. `Presentation/GameSession.swift`

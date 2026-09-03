@@ -1,7 +1,7 @@
 import SwiftUI
 
 @main
-struct WhoPaysApp: App {
+struct TabTakerApp: App {
   var body: some Scene {
     WindowGroup {
       GameView()

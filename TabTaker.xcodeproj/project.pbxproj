@@ -18,24 +18,24 @@
 			containerPortal = A1000000000000000000000A /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = A10000000000000000000006;
-			remoteInfo = WhoPays;
+			remoteInfo = TabTaker;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		A10000000000000000000001 /* WhoPays.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhoPays.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A10000000000000000000010 /* WhoPaysTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WhoPaysTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A10000000000000000000001 /* TabTaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TabTaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A10000000000000000000010 /* TabTakerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TabTakerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		A10000000000000000000002 /* WhoPays */ = {
+		A10000000000000000000002 /* TabTaker */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = WhoPays;
+			path = TabTaker;
 			sourceTree = "<group>";
 		};
-		A10000000000000000000011 /* WhoPaysTests */ = {
+		A10000000000000000000011 /* TabTakerTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = WhoPaysTests;
+			path = TabTakerTests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -64,8 +64,8 @@
 		A10000000000000000000004 = {
 			isa = PBXGroup;
 			children = (
-				A10000000000000000000002 /* WhoPays */,
-				A10000000000000000000011 /* WhoPaysTests */,
+				A10000000000000000000002 /* TabTaker */,
+				A10000000000000000000011 /* TabTakerTests */,
 				A10000000000000000000005 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -73,8 +73,8 @@
 		A10000000000000000000005 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A10000000000000000000001 /* WhoPays.app */,
-				A10000000000000000000010 /* WhoPaysTests.xctest */,
+				A10000000000000000000001 /* TabTaker.app */,
+				A10000000000000000000010 /* TabTakerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -82,9 +82,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A10000000000000000000006 /* WhoPays */ = {
+		A10000000000000000000006 /* TabTaker */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A10000000000000000000007 /* Build configuration list for PBXNativeTarget "WhoPays" */;
+			buildConfigurationList = A10000000000000000000007 /* Build configuration list for PBXNativeTarget "TabTaker" */;
 			buildPhases = (
 				A10000000000000000000008 /* Sources */,
 				A10000000000000000000003 /* Frameworks */,
@@ -95,21 +95,21 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				A10000000000000000000002 /* WhoPays */,
+				A10000000000000000000002 /* TabTaker */,
 			);
-			name = WhoPays;
+			name = TabTaker;
 			packageProductDependencies = (
 				A10000000000000000000022 /* GameCore */,
 				A10000000000000000000032 /* GoogleMobileAds */,
 				A10000000000000000000035 /* GoogleUserMessagingPlatform */,
 			);
-			productName = WhoPays;
-			productReference = A10000000000000000000001 /* WhoPays.app */;
+			productName = TabTaker;
+			productReference = A10000000000000000000001 /* TabTaker.app */;
 			productType = "com.apple.product-type.application";
 		};
-		A10000000000000000000013 /* WhoPaysTests */ = {
+		A10000000000000000000013 /* TabTakerTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A10000000000000000000016 /* Build configuration list for PBXNativeTarget "WhoPaysTests" */;
+			buildConfigurationList = A10000000000000000000016 /* Build configuration list for PBXNativeTarget "TabTakerTests" */;
 			buildPhases = (
 				A10000000000000000000014 /* Sources */,
 				A10000000000000000000012 /* Frameworks */,
@@ -121,13 +121,13 @@
 				A10000000000000000000018 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				A10000000000000000000011 /* WhoPaysTests */,
+				A10000000000000000000011 /* TabTakerTests */,
 			);
-			name = WhoPaysTests;
+			name = TabTakerTests;
 			packageProductDependencies = (
 			);
-			productName = WhoPaysTests;
-			productReference = A10000000000000000000010 /* WhoPaysTests.xctest */;
+			productName = TabTakerTests;
+			productReference = A10000000000000000000010 /* TabTakerTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -149,7 +149,7 @@
 					};
 				};
 			};
-			buildConfigurationList = A1000000000000000000000B /* Build configuration list for PBXProject "WhoPays" */;
+			buildConfigurationList = A1000000000000000000000B /* Build configuration list for PBXProject "TabTaker" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -168,8 +168,8 @@
 				A10000000000000000000034 /* XCRemoteSwiftPackageReference \"GoogleUserMessagingPlatform\" */,
 			);
 			targets = (
-				A10000000000000000000006 /* WhoPays */,
-				A10000000000000000000013 /* WhoPaysTests */,
+				A10000000000000000000006 /* TabTaker */,
+				A10000000000000000000013 /* TabTakerTests */,
 			);
 		};
 /* End PBXProject section */
@@ -255,7 +255,7 @@
 /* Begin PBXTargetDependency section */
 		A10000000000000000000018 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A10000000000000000000006 /* WhoPays */;
+			target = A10000000000000000000006 /* TabTaker */;
 			targetProxy = A10000000000000000000017 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -309,7 +309,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = PTXCAH5P4R;
 				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = Config/WhoPays-Info.plist;
+				INFOPLIST_FILE = Config/TabTaker-Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -335,7 +335,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = PTXCAH5P4R;
 				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = Config/WhoPays-Info.plist;
+				INFOPLIST_FILE = Config/TabTaker-Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -371,7 +371,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WhoPays.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/WhoPays";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TabTaker.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TabTaker";
 			};
 			name = Debug;
 		};
@@ -393,14 +393,14 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WhoPays.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/WhoPays";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TabTaker.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TabTaker";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A10000000000000000000007 /* Build configuration list for PBXNativeTarget "WhoPays" */ = {
+		A10000000000000000000007 /* Build configuration list for PBXNativeTarget "TabTaker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A1000000000000000000000E /* Debug */,
@@ -409,7 +409,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A1000000000000000000000B /* Build configuration list for PBXProject "WhoPays" */ = {
+		A1000000000000000000000B /* Build configuration list for PBXProject "TabTaker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A1000000000000000000000C /* Debug */,
@@ -418,7 +418,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A10000000000000000000016 /* Build configuration list for PBXNativeTarget "WhoPaysTests" */ = {
+		A10000000000000000000016 /* Build configuration list for PBXNativeTarget "TabTakerTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A10000000000000000000019 /* Debug */,
