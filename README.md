@@ -1,6 +1,8 @@
-# WhoPays
+# TabTaker
 
-WhoPays is a small, offline iOS party game. Two or more people place a finger on the screen, keep their fingers down for two seconds, and the app randomly chooses who pays.
+TabTaker is a small iOS party game. Two or more people place a finger on the screen, keep their fingers down for two seconds, and the app randomly chooses who pays.
+
+The source target and bundle identifier retain the original technical name, `WhoPays`, to preserve code signing and continuity. The user-facing app name is `TabTaker`.
 
 The project is intentionally small, but structured as a production-quality Swift application. It uses SwiftUI for the interface, a minimal UIKit bridge for true multi-touch input, dependency injection for testability, and Google's Mobile Ads and User Messaging Platform SDKs for consent-aware advertising.
 
@@ -282,8 +284,8 @@ The in-app privacy-options control appears automatically when Google requires it
 - Small SwiftUI views with explicit inputs
 - Stable SwiftUI view trees for predictable identity and animation
 - Native String Catalog localization
-- No external dependencies without a demonstrated need
+- External dependencies limited to explicit infrastructure needs
 
 ## Data and privacy
 
-WhoPays does not collect or transmit data. It has no networking, backend, authentication, analytics, advertising SDK, or persistent user profile.
+TabTaker has no backend, account, application analytics, or persistent user profile. Google Mobile Ads may process data to deliver and measure advertising, subject to the user's consent and Google's policies. The public privacy policy must be published before App Store submission.
