@@ -2,7 +2,7 @@
 
 TabTaker is a small iOS party game. Two or more people place a finger on the screen, keep their fingers down for two seconds, and the app randomly chooses who pays.
 
-The source target and bundle identifier retain the original technical name, `WhoPays`, to preserve code signing and continuity. The user-facing app name is `TabTaker`.
+The source target retains the original technical name, `WhoPays`, while the user-facing app name and bundle identifier are `TabTaker` and `com.thomaslaure.tabtaker`.
 
 The project is intentionally small, but structured as a production-quality Swift application. It uses SwiftUI for the interface, a minimal UIKit bridge for true multi-touch input, dependency injection for testability, and Google's Mobile Ads and User Messaging Platform SDKs for consent-aware advertising.
 

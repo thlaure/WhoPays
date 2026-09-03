@@ -2,7 +2,7 @@
 
 Ce tutoriel explique les bases de Swift, le fonctionnement de SwiftUI et l'organisation du projet TabTaker. Il est conçu pour une personne qui n'a encore jamais développé en Swift.
 
-> Le nom visible de l'application est **TabTaker**. Les noms techniques déjà établis (`WhoPays.xcodeproj`, cible `WhoPays`, bundle ID `com.thomaslaure.WhoPays`) restent inchangés afin de préserver la signature et l'identifiant Apple.
+> Le nom visible de l'application et son bundle ID sont **TabTaker** et `com.thomaslaure.tabtaker`. Les noms techniques du projet (`WhoPays.xcodeproj` et cible `WhoPays`) restent inchangés : ils ne sont pas visibles par les utilisateurs.
 
 ## Vue d'ensemble
 
