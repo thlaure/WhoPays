@@ -52,8 +52,6 @@ struct GameView: View {
         isCountingDown: isCountingDown
       )
       .allowsHitTesting(false)
-
-      ReplayButton(isVisible: winnerID != nil, action: session.reset)
     }
     .animation(.spring(response: 0.45, dampingFraction: 0.68), value: session.phase)
     .animation(.easeOut(duration: 0.18), value: session.touches)

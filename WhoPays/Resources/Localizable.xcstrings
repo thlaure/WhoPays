@@ -1,12 +1,6 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "action.play_again" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Play again" } },
-        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Rejouer" } }
-      }
-    },
     "brand" : {
       "localizations" : {
         "en" : { "stringUnit" : { "state" : "translated", "value" : "Who pays?" } },
