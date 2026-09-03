@@ -249,7 +249,7 @@ The shared **WhoPays** scheme has code coverage enabled. Open the latest test re
 The domain selection logic and the `GameSession` state machine have 100% line coverage. UIKit event delivery, SwiftUI rendering, and physical haptic output are integration boundaries; they are verified through builds and device or simulator checks instead of artificial unit tests.
 
 GitHub Actions runs the same `make quality` command for every pull request and every push to
-`main` or `develop`. Failed test results are retained for seven days to help diagnose CI failures.
+`main`. Failed test results are retained for seven days to help diagnose CI failures.
 
 ## Design principles
 
