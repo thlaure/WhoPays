@@ -1,12 +1,12 @@
 SHELL := /bin/zsh
 
-PROJECT := WhoPays.xcodeproj
-SCHEME := WhoPays
+PROJECT := TabTaker.xcodeproj
+SCHEME := TabTaker
 DESTINATION ?= platform=iOS Simulator,name=iPhone 17 Pro,OS=latest
 BUILD_ROOT := .build
 DERIVED_DATA := $(BUILD_ROOT)/DerivedData
 RESULT_BUNDLE := $(BUILD_ROOT)/TestResults.xcresult
-SWIFT_SOURCE_DIRECTORIES := WhoPays WhoPaysTests GameCore/Sources GameCore/Tests
+SWIFT_SOURCE_DIRECTORIES := TabTaker TabTakerTests GameCore/Sources GameCore/Tests
 CORE_PACKAGE := GameCore
 
 .PHONY: format lint core-test core-coverage fast-quality ios-analyze ios-test ios-quality quality clean

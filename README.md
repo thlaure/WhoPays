@@ -2,7 +2,7 @@
 
 TabTaker is a small iOS party game. Two or more people place a finger on the screen, keep their fingers down for two seconds, and the app randomly chooses who pays.
 
-The source target retains the original technical name, `WhoPays`, while the user-facing app name and bundle identifier are `TabTaker` and `com.thomaslaure.tabtaker`.
+The user-facing name, Xcode project, scheme, source target, and bundle identifier are consistently named `TabTaker`.
 
 The project is intentionally small, but structured as a production-quality Swift application. It uses SwiftUI for the interface, a minimal UIKit bridge for true multi-touch input, dependency injection for testability, and Google's Mobile Ads and User Messaging Platform SDKs for consent-aware advertising.
 
@@ -26,8 +26,8 @@ The project is intentionally small, but structured as a production-quality Swift
 
 ## Running the app
 
-1. Open `WhoPays.xcodeproj` in Xcode.
-2. Select the **WhoPays** scheme.
+1. Open `TabTaker.xcodeproj` in Xcode.
+2. Select the **TabTaker** scheme.
 3. Choose an iPhone simulator or a connected iPhone.
 4. Press `⌘R`, or choose **Product > Run**.
 
@@ -103,7 +103,7 @@ flowchart TD
     Infrastructure -. implements .-> FeedbackPort
     Resources[Resources<br/>English and French strings] --> Presentation
     CoreTests[GameCoreTests<br/>Fast deterministic unit tests] --> Core
-    AppTests[WhoPaysTests<br/>Localization tests] --> Resources
+    AppTests[TabTakerTests<br/>Localization tests] --> Resources
 
     style Core fill:#222,color:#fff,stroke:#888
     style Presentation fill:#222,color:#fff,stroke:#888
@@ -125,15 +125,15 @@ The dependency direction matters:
 ## Project structure
 
 ```text
-WhoPays/
+TabTaker/
 ├── Config/
-│   └── WhoPays-Info.plist
-├── WhoPays.xcodeproj/
+│   └── TabTaker-Info.plist
+├── TabTaker.xcodeproj/
 │   └── xcshareddata/xcschemes/
-│       └── WhoPays.xcscheme
-├── WhoPays/
+│       └── TabTaker.xcscheme
+├── TabTaker/
 │   ├── App/
-│   │   └── WhoPaysApp.swift
+│   │   └── TabTakerApp.swift
 │   ├── Infrastructure/
 │   │   ├── GoogleInterstitialAdManager.swift
 │   │   ├── MultiTouchSurface.swift
@@ -158,7 +158,7 @@ WhoPays/
 │       ├── GameSessionTests.swift
 │       ├── InterstitialAdDisplayPolicyTests.swift
 │       └── RandomWinnerSelectorTests.swift
-└── WhoPaysTests/
+└── TabTakerTests/
     └── LocalizationTests.swift
 ```
 
@@ -166,7 +166,7 @@ WhoPays/
 
 ### App
 
-`WhoPaysApp.swift` is the application entry point. It creates the main window and displays `GameView`.
+`TabTakerApp.swift` is the application entry point. It creates the main window and displays `GameView`.
 
 ### GameCore
 
@@ -252,7 +252,7 @@ device is unavailable:
 make quality DESTINATION='platform=iOS Simulator,name=iPhone 17e,OS=latest'
 ```
 
-The shared **WhoPays** scheme has code coverage enabled. Open the latest test report in Xcode's Report navigator to inspect coverage by target and source file.
+The shared **TabTaker** scheme has code coverage enabled. Open the latest test report in Xcode's Report navigator to inspect coverage by target and source file.
 
 The domain selection logic and the `GameSession` state machine have 100% line coverage. UIKit event delivery, SwiftUI rendering, and physical haptic output are integration boundaries; they are verified through builds and device or simulator checks instead of artificial unit tests.
 
