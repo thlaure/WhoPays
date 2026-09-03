@@ -9,5 +9,4 @@ enum GameText {
   static let minimumPlayers: LocalizedStringResource = "status.minimum_players"
   static let suspense: LocalizedStringResource = "status.suspense"
   static let removeFingers: LocalizedStringResource = "status.remove_fingers"
-  static let playAgain: LocalizedStringResource = "action.play_again"
 }

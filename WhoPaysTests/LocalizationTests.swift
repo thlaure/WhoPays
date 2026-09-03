@@ -7,7 +7,6 @@ final class LocalizationTests: XCTestCase {
     assertTranslations(
       languageCode: "fr",
       expected: [
-        "action.play_again": "Rejouer",
         "brand": "Qui paie ?",
         "status.minimum_players": "Au moins 2 joueurs",
         "status.remove_fingers": "Retirez les doigts pour rejouer",
@@ -24,7 +23,6 @@ final class LocalizationTests: XCTestCase {
     assertTranslations(
       languageCode: "en",
       expected: [
-        "action.play_again": "Play again",
         "brand": "Who pays?",
         "status.minimum_players": "At least 2 players",
         "status.remove_fingers": "Remove fingers to play again",
