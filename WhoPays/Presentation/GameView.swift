@@ -1,3 +1,4 @@
+import GameCore
 import SwiftUI
 
 @MainActor
@@ -19,7 +20,7 @@ struct GameView: View {
   }
 
   init() {
-    _session = State(initialValue: GameSession())
+    _session = State(initialValue: GameSession(winnerFeedback: SystemWinnerFeedback()))
   }
 
   init(session: GameSession) {

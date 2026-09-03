@@ -1,3 +1,4 @@
+import GameCore
 import UIKit
 
 struct SystemWinnerFeedback: WinnerFeedbackProviding {

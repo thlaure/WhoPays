@@ -95,29 +95,30 @@ The architecture keeps business rules independent from Apple-specific input and 
 ```mermaid
 flowchart TD
     App[App<br/>Composition root] --> Presentation
-    Presentation[Presentation<br/>SwiftUI views and GameSession] --> Domain
-    Presentation --> FeedbackPort[WinnerFeedbackProviding]
+    Presentation[Presentation<br/>SwiftUI views] --> Core
+    Core[GameCore<br/>Rules and observable game state] --> FeedbackPort[WinnerFeedbackProviding]
     Infrastructure[Infrastructure<br/>UIKit touch input and haptics] --> Presentation
     Infrastructure -. implements .-> FeedbackPort
     Resources[Resources<br/>English and French strings] --> Presentation
-    Tests[WhoPaysTests<br/>Deterministic unit tests] --> Domain
-    Tests --> Presentation
+    CoreTests[GameCoreTests<br/>Fast deterministic unit tests] --> Core
+    AppTests[WhoPaysTests<br/>Localization tests] --> Resources
 
-    style Domain fill:#222,color:#fff,stroke:#888
+    style Core fill:#222,color:#fff,stroke:#888
     style Presentation fill:#222,color:#fff,stroke:#888
     style Infrastructure fill:#222,color:#fff,stroke:#888
     style App fill:#222,color:#fff,stroke:#888
     style Resources fill:#222,color:#fff,stroke:#888
-    style Tests fill:#222,color:#fff,stroke:#888
+    style CoreTests fill:#222,color:#fff,stroke:#888
+    style AppTests fill:#222,color:#fff,stroke:#888
 ```
 
 The dependency direction matters:
 
-- **Domain** contains the core concepts and winner-selection contract.
-- **Presentation** depends on the domain and exposes observable state to SwiftUI.
+- **GameCore** contains the core concepts, winner-selection contract, and observable game state. It is a local Swift package, so its tests run without an iOS simulator.
+- **Presentation** depends on GameCore and renders its state with SwiftUI.
 - **Infrastructure** adapts UIKit and haptic APIs to the application's own types and protocols.
 - **App** creates the root view and connects the pieces.
-- **Tests** replace random selection and haptics with predictable test doubles.
+- **GameCoreTests** replace random selection and haptics with predictable test doubles.
 
 ## Project structure
 
@@ -129,9 +130,6 @@ WhoPays/
 ├── WhoPays/
 │   ├── App/
 │   │   └── WhoPaysApp.swift
-│   ├── Domain/
-│   │   ├── TouchPoint.swift
-│   │   └── WinnerSelecting.swift
 │   ├── Infrastructure/
 │   │   ├── MultiTouchSurface.swift
 │   │   └── SystemWinnerFeedback.swift
@@ -140,16 +138,21 @@ WhoPays/
 │   │   │   ├── FingerMarker.swift
 │   │   │   ├── GameChrome.swift
 │   │   │   └── ReplayButton.swift
-│   │   ├── GameSession.swift
 │   │   ├── GameText.swift
 │   │   ├── GameView.swift
-│   │   └── WinnerFeedbackProviding.swift
 │   └── Resources/
 │       └── Localizable.xcstrings
+├── GameCore/
+│   ├── Sources/GameCore/
+│   │   ├── GameSession.swift
+│   │   ├── TouchPoint.swift
+│   │   ├── WinnerFeedbackProviding.swift
+│   │   └── WinnerSelecting.swift
+│   └── Tests/GameCoreTests/
+│       ├── GameSessionTests.swift
+│       └── RandomWinnerSelectorTests.swift
 └── WhoPaysTests/
-    ├── GameSessionTests.swift
-    ├── LocalizationTests.swift
-    └── RandomWinnerSelectorTests.swift
+    └── LocalizationTests.swift
 ```
 
 ## File guide
@@ -158,15 +161,15 @@ WhoPays/
 
 `WhoPaysApp.swift` is the application entry point. It creates the main window and displays `GameView`.
 
-### Domain
+### GameCore
 
-`TouchPoint.swift` defines the app's representation of a finger: a stable identifier, a position, and a color index.
+The local `GameCore` package is the testable core shared by the iOS app and its fast unit-test suite.
 
-`WinnerSelecting.swift` defines the winner-selection protocol and its production implementation, `RandomWinnerSelector`. The protocol allows tests to substitute a deterministic selector.
+`TouchPoint.swift` defines the app's representation of a finger: a stable identifier, a position, and a color index. `WinnerSelecting.swift` defines the winner-selection protocol and its production implementation, `RandomWinnerSelector`. The protocol allows tests to substitute a deterministic selector.
+
+`GameSession.swift` owns the game state. It receives touch updates, starts and cancels the countdown, asks for a winner, and requests haptic feedback through `WinnerFeedbackProviding`.
 
 ### Presentation
-
-`GameSession.swift` owns the game state. It receives touch updates, starts and cancels the countdown, asks for a winner, and requests haptic feedback. The `@Observable` macro lets SwiftUI react to its state changes.
 
 `GameView.swift` composes the full-screen interface. It owns a `GameSession`, places one marker per active touch, and passes state to smaller components.
 
@@ -177,8 +180,6 @@ WhoPays/
 `ReplayButton.swift` is a small reusable component. It receives visibility and an action instead of depending directly on `GameSession`.
 
 `GameText.swift` centralizes typed references to localization keys.
-
-`WinnerFeedbackProviding.swift` defines the haptic-feedback boundary used by `GameSession`.
 
 ### Infrastructure
 
@@ -192,9 +193,7 @@ WhoPays/
 
 ### Tests
 
-`GameSessionTests.swift` verifies the state machine, countdown cancellation, deterministic winner selection, feedback request, movement handling, and reset behavior.
-
-`RandomWinnerSelectorTests.swift` verifies the boundary cases of random selection.
+`GameCoreTests` verifies the state machine, countdown cancellation, deterministic winner selection, feedback request, movement handling, reset behavior, and random-selection boundary cases. These tests run with `swift test`, without booting a simulator.
 
 `LocalizationTests.swift` verifies that every expected English and French translation is present in the built application bundle.
 

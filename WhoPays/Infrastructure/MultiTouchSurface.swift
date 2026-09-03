@@ -1,3 +1,4 @@
+import GameCore
 import SwiftUI
 import UIKit
 

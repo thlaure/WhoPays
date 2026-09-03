@@ -6,9 +6,10 @@ DESTINATION ?= platform=iOS Simulator,name=iPhone 17 Pro,OS=latest
 BUILD_ROOT := .build
 DERIVED_DATA := $(BUILD_ROOT)/DerivedData
 RESULT_BUNDLE := $(BUILD_ROOT)/TestResults.xcresult
-SWIFT_SOURCE_DIRECTORIES := WhoPays WhoPaysTests
+SWIFT_SOURCE_DIRECTORIES := WhoPays WhoPaysTests GameCore/Sources GameCore/Tests
+CORE_PACKAGE := GameCore
 
-.PHONY: format lint analyze test coverage quality clean
+.PHONY: format lint core-test core-coverage fast-quality ios-analyze ios-test ios-quality quality clean
 
 format:
 	xcrun swift-format format --in-place --recursive $(SWIFT_SOURCE_DIRECTORIES)
@@ -17,7 +18,15 @@ lint:
 	xcrun swift-format lint --strict --recursive $(SWIFT_SOURCE_DIRECTORIES)
 	PYTHONPYCACHEPREFIX="$(BUILD_ROOT)/PythonCache" python3 -m py_compile scripts/check_coverage.py
 
-analyze:
+core-test:
+	swift test --package-path "$(CORE_PACKAGE)" --enable-code-coverage
+
+core-coverage:
+	python3 scripts/check_coverage.py "$(CORE_PACKAGE)"
+
+fast-quality: lint core-test core-coverage
+
+ios-analyze:
 	xcodebuild analyze -quiet \
 		-project "$(PROJECT)" \
 		-scheme "$(SCHEME)" \
@@ -25,7 +34,7 @@ analyze:
 		-derivedDataPath "$(DERIVED_DATA)" \
 		CODE_SIGNING_ALLOWED=NO
 
-test:
+ios-test:
 	mkdir -p "$(BUILD_ROOT)"
 	rm -rf "$(RESULT_BUNDLE)"
 	xcodebuild test -quiet \
@@ -37,10 +46,9 @@ test:
 		-enableCodeCoverage YES \
 		CODE_SIGNING_ALLOWED=NO
 
-coverage:
-	python3 scripts/check_coverage.py "$(RESULT_BUNDLE)"
+ios-quality: ios-analyze ios-test
 
-quality: lint analyze test coverage
+quality: fast-quality ios-quality
 
 clean:
 	rm -rf "$(BUILD_ROOT)"

@@ -1,4 +1,4 @@
-protocol WinnerFeedbackProviding {
+public protocol WinnerFeedbackProviding {
   @MainActor
   func playWinnerFeedback()
 }

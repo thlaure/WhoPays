@@ -1,7 +1,7 @@
 import CoreGraphics
 import XCTest
 
-@testable import WhoPays
+@testable import GameCore
 
 @MainActor
 final class GameSessionTests: XCTestCase {
@@ -32,11 +32,13 @@ final class GameSessionTests: XCTestCase {
     XCTAssertGreaterThan(deadline, Date())
   }
 
-  func testRemovingTouchCancelsCountdown() {
+  func testRemovingTouchCancelsCountdown() async {
     let session = makeSession()
     session.updateTouches(twoTouches)
+    await Task.yield()
 
     session.updateTouches([firstTouch])
+    await Task.yield()
 
     XCTAssertEqual(session.phase, .waiting)
   }

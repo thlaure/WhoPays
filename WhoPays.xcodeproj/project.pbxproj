@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		A10000000000000000000020 /* GameCore in Frameworks */ = {isa = PBXBuildFile; productRef = A10000000000000000000022 /* GameCore */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		A10000000000000000000017 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -39,6 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A10000000000000000000020 /* GameCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,6 +95,7 @@
 			);
 			name = WhoPays;
 			packageProductDependencies = (
+				A10000000000000000000022 /* GameCore */,
 			);
 			productName = WhoPays;
 			productReference = A10000000000000000000001 /* WhoPays.app */;
@@ -150,6 +156,9 @@
 			productRefGroup = A10000000000000000000005 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
+			packageReferences = (
+				A10000000000000000000021 /* XCLocalSwiftPackageReference \"GameCore\" */,
+			);
 			targets = (
 				A10000000000000000000006 /* WhoPays */,
 				A10000000000000000000013 /* WhoPaysTests */,
@@ -173,6 +182,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		A10000000000000000000021 /* XCLocalSwiftPackageReference "GameCore" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = GameCore;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A10000000000000000000022 /* GameCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A10000000000000000000021 /* XCLocalSwiftPackageReference "GameCore" */;
+			productName = GameCore;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A10000000000000000000008 /* Sources */ = {
