@@ -23,7 +23,7 @@ jobs:
 
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Select Xcode 26.6
         run: sudo xcode-select --switch /Applications/Xcode_26.6.app/Contents/Developer
@@ -39,7 +39,7 @@ jobs:
 
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Select Xcode 26.6
         run: sudo xcode-select --switch /Applications/Xcode_26.6.app/Contents/Developer
