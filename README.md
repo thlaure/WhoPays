@@ -226,9 +226,30 @@ This keeps tests fast and reliable. They do not wait two real seconds, depend on
 
 Run the complete test suite with `⌘U`, or choose **Product > Test** in Xcode.
 
+The repository also exposes one-command quality checks:
+
+```bash
+make format   # Apply the repository's Swift formatting rules
+make lint     # Reject formatting and Swift style violations
+make analyze  # Run Xcode's static analyzer
+make test     # Build tests, run them, and produce a coverage report
+make coverage # Enforce 100% coverage on essential business logic
+make quality  # Run lint, analysis, tests, and coverage
+```
+
+`make quality` uses an iPhone 17 Pro simulator by default. Override `DESTINATION` when that
+device is unavailable:
+
+```bash
+make quality DESTINATION='platform=iOS Simulator,name=iPhone 17e,OS=latest'
+```
+
 The shared **WhoPays** scheme has code coverage enabled. Open the latest test report in Xcode's Report navigator to inspect coverage by target and source file.
 
 The domain selection logic and the `GameSession` state machine have 100% line coverage. UIKit event delivery, SwiftUI rendering, and physical haptic output are integration boundaries; they are verified through builds and device or simulator checks instead of artificial unit tests.
+
+GitHub Actions runs the same `make quality` command for every pull request and every push to
+`main`. Failed test results are retained for seven days to help diagnose CI failures.
 
 ## Design principles
 
