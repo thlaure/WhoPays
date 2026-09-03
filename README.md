@@ -268,7 +268,7 @@ Release builds use the configured AdMob interstitial unit. The app records a com
 Before submitting to the App Store:
 
 1. In AdMob **Privacy & messaging**, create and publish the required consent message for the EEA, UK, and Switzerland.
-2. Publish a public privacy-policy URL and enter it in App Store Connect.
+2. Publish the [privacy-policy source](docs/privacy-policy.md) at a public HTTPS URL and enter it in App Store Connect.
 3. Complete App Store Connect's App Privacy questionnaire based on the final Google Mobile Ads configuration.
 
 The in-app privacy-options control appears automatically when Google requires it.
