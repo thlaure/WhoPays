@@ -1,8 +1,10 @@
-# WhoPays
+# TabTaker
 
-WhoPays is a small, offline iOS party game. Two or more people place a finger on the screen, keep their fingers down for two seconds, and the app randomly chooses who pays.
+TabTaker is a small iOS party game. Two or more people place a finger on the screen, keep their fingers down for two seconds, and the app randomly chooses who pays.
 
-The project is intentionally small, but structured as a production-quality Swift application. It uses SwiftUI for the interface, a minimal UIKit bridge for true multi-touch input, dependency injection for testability, and no external dependencies.
+The source target retains the original technical name, `WhoPays`, while the user-facing app name and bundle identifier are `TabTaker` and `com.thomaslaure.tabtaker`.
+
+The project is intentionally small, but structured as a production-quality Swift application. It uses SwiftUI for the interface, a minimal UIKit bridge for true multi-touch input, dependency injection for testability, and Google's Mobile Ads and User Messaging Platform SDKs for consent-aware advertising.
 
 ## Features
 
@@ -12,9 +14,9 @@ The project is intentionally small, but structured as a production-quality Swift
 - Random winner selection
 - Winner animation and haptic feedback
 - Automatic reset after all fingers are removed
-- Manual **Play again** button
 - English and French localization
-- Fully offline: no backend, account, analytics, or authentication
+- No backend, account, application analytics, or authentication
+- Optional consent-aware interstitial ads, shown at most once every four completed rounds
 
 ## Requirements
 
@@ -124,6 +126,8 @@ The dependency direction matters:
 
 ```text
 WhoPays/
+├── Config/
+│   └── WhoPays-Info.plist
 ├── WhoPays.xcodeproj/
 │   └── xcshareddata/xcschemes/
 │       └── WhoPays.xcscheme
@@ -131,13 +135,14 @@ WhoPays/
 │   ├── App/
 │   │   └── WhoPaysApp.swift
 │   ├── Infrastructure/
+│   │   ├── GoogleInterstitialAdManager.swift
 │   │   ├── MultiTouchSurface.swift
 │   │   └── SystemWinnerFeedback.swift
 │   ├── Presentation/
 │   │   ├── Components/
 │   │   │   ├── FingerMarker.swift
 │   │   │   ├── GameChrome.swift
-│   │   │   └── ReplayButton.swift
+│   │   │   └── PrivacyOptionsButton.swift
 │   │   ├── GameText.swift
 │   │   ├── GameView.swift
 │   └── Resources/
@@ -145,11 +150,13 @@ WhoPays/
 ├── GameCore/
 │   ├── Sources/GameCore/
 │   │   ├── GameSession.swift
+│   │   ├── InterstitialAdDisplayPolicy.swift
 │   │   ├── TouchPoint.swift
 │   │   ├── WinnerFeedbackProviding.swift
 │   │   └── WinnerSelecting.swift
 │   └── Tests/GameCoreTests/
 │       ├── GameSessionTests.swift
+│       ├── InterstitialAdDisplayPolicyTests.swift
 │       └── RandomWinnerSelectorTests.swift
 └── WhoPaysTests/
     └── LocalizationTests.swift
@@ -177,7 +184,7 @@ The local `GameCore` package is the testable core shared by the iOS app and its 
 
 `FingerMarker.swift` draws a player's colored marker and its winner appearance.
 
-`ReplayButton.swift` is a small reusable component. It receives visibility and an action instead of depending directly on `GameSession`.
+`PrivacyOptionsButton.swift` is a small reusable component that opens Google's privacy controls when required by the consent configuration.
 
 `GameText.swift` centralizes typed references to localization keys.
 
@@ -186,6 +193,8 @@ The local `GameCore` package is the testable core shared by the iOS app and its 
 `MultiTouchSurface.swift` bridges UIKit into SwiftUI with `UIViewRepresentable`. UIKit reports `touchesBegan`, `touchesMoved`, `touchesEnded`, and `touchesCancelled`; the bridge converts these events into `[TouchPoint]` values.
 
 `SystemWinnerFeedback.swift` implements `WinnerFeedbackProviding` with Apple's notification and impact feedback generators.
+
+`GoogleInterstitialAdManager.swift` owns the advertising integration. On launch, it requests the current consent status through Google's User Messaging Platform, presents a consent form when required, then preloads an interstitial only when ads may be requested. It deliberately keeps ads outside `GameCore`: the game remains playable if consent is declined, the network is unavailable, or an ad fails to load.
 
 ### Resources
 
@@ -250,6 +259,20 @@ The domain selection logic and the `GameSession` state machine have 100% line co
 GitHub Actions runs the same `make quality` command for every pull request and every push to
 `main`. Failed test results are retained for seven days to help diagnose CI failures.
 
+## Advertising and privacy
+
+The Debug build uses Google's official test interstitial unit. It never requests the production ad unit, so development and device testing do not generate invalid traffic.
+
+Release builds use the configured AdMob interstitial unit. The app records a completed round when a winner is chosen, and may display a preloaded ad only after the players remove all fingers and every fourth completed round. This is a natural break between rounds; no ad interrupts the countdown or selection.
+
+Before submitting to the App Store:
+
+1. In AdMob **Privacy & messaging**, create and publish the required consent message for the EEA, UK, and Switzerland.
+2. Publish a public privacy-policy URL and enter it in App Store Connect.
+3. Complete App Store Connect's App Privacy questionnaire based on the final Google Mobile Ads configuration.
+
+The in-app privacy-options control appears automatically when Google requires it.
+
 ## Design principles
 
 - Readability over premature optimization
@@ -261,8 +284,8 @@ GitHub Actions runs the same `make quality` command for every pull request and e
 - Small SwiftUI views with explicit inputs
 - Stable SwiftUI view trees for predictable identity and animation
 - Native String Catalog localization
-- No external dependencies without a demonstrated need
+- External dependencies limited to explicit infrastructure needs
 
 ## Data and privacy
 
-WhoPays does not collect or transmit data. It has no networking, backend, authentication, analytics, advertising SDK, or persistent user profile.
+TabTaker has no backend, account, application analytics, or persistent user profile. Google Mobile Ads may process data to deliver and measure advertising, subject to the user's consent and Google's policies. The public privacy policy must be published before App Store submission.

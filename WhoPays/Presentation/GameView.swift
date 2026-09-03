@@ -4,6 +4,7 @@ import SwiftUI
 @MainActor
 struct GameView: View {
   @State private var session: GameSession
+  @State private var adManager: GoogleInterstitialAdManager
 
   private let colors: [Color] = [
     .pink, .cyan, .orange, .green, .purple, .yellow, .indigo, .mint, .red, .blue,
@@ -21,10 +22,12 @@ struct GameView: View {
 
   init() {
     _session = State(initialValue: GameSession(winnerFeedback: SystemWinnerFeedback()))
+    _adManager = State(initialValue: GoogleInterstitialAdManager())
   }
 
   init(session: GameSession) {
     _session = State(initialValue: session)
+    _adManager = State(initialValue: GoogleInterstitialAdManager())
   }
 
   var body: some View {
@@ -52,6 +55,30 @@ struct GameView: View {
         isCountingDown: isCountingDown
       )
       .allowsHitTesting(false)
+
+      if adManager.isPrivacyOptionsRequired {
+        VStack {
+          HStack {
+            Spacer()
+            PrivacyOptionsButton(action: adManager.presentPrivacyOptions)
+          }
+          Spacer()
+        }
+        .padding(20)
+      }
+    }
+    .task {
+      adManager.prepare()
+    }
+    .onChange(of: session.phase) { _, phase in
+      switch phase {
+      case .winner:
+        adManager.recordCompletedRound()
+      case .waiting:
+        adManager.presentIfEligible()
+      case .countingDown:
+        break
+      }
     }
     .animation(.spring(response: 0.45, dampingFraction: 0.68), value: session.phase)
     .animation(.easeOut(duration: 0.18), value: session.touches)

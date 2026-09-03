@@ -1,6 +1,8 @@
-# Comprendre Swift et le projet WhoPays
+# Comprendre Swift et le projet TabTaker
 
-Ce tutoriel explique les bases de Swift, le fonctionnement de SwiftUI et l'organisation du projet WhoPays. Il est conçu pour une personne qui n'a encore jamais développé en Swift.
+Ce tutoriel explique les bases de Swift, le fonctionnement de SwiftUI et l'organisation du projet TabTaker. Il est conçu pour une personne qui n'a encore jamais développé en Swift.
+
+> Le nom visible de l'application et son bundle ID sont **TabTaker** et `com.thomaslaure.tabtaker`. Les noms techniques du projet (`WhoPays.xcodeproj` et cible `WhoPays`) restent inchangés : ils ne sont pas visibles par les utilisateurs.
 
 ## Vue d'ensemble
 
@@ -63,7 +65,7 @@ Swift est un langage fortement et statiquement typé. Le compilateur connaît le
 
 ```swift
 let playerCount: Int = 2
-let title: String = "WhoPays"
+let title: String = "TabTaker"
 let isReady: Bool = true
 ```
 
