@@ -28,8 +28,37 @@ jobs:
       - name: Select Xcode 26.6
         run: sudo xcode-select --switch /Applications/Xcode_26.6.app/Contents/Developer
 
-      - name: Run quality checks
-        run: make quality DESTINATION='platform=iOS Simulator,name=iPhone 16e,OS=26.2'
+      - name: Create iOS simulator and run quality checks
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          runtime_id="$(
+            xcrun simctl list runtimes --json |
+              jq -r '[.runtimes[] | select(.platform == "iOS" and .isAvailable)]
+                | sort_by(.version | split(".") | map(tonumber))
+                | last
+                | .identifier // empty'
+          )"
+          device_type_id="$(
+            xcrun simctl list devicetypes --json |
+              jq -r '[.devicetypes[] | select(.name == "iPhone 17 Pro")]
+                | first
+                | .identifier // empty'
+          )"
+
+          if [[ -z "$runtime_id" || -z "$device_type_id" ]]; then
+            echo "No compatible iOS runtime or iPhone device type found." >&2
+            xcrun simctl list
+            exit 1
+          fi
+
+          simulator_id="$(xcrun simctl create WhoPays-CI "$device_type_id" "$runtime_id")"
+          trap 'xcrun simctl shutdown "$simulator_id" || true; xcrun simctl delete "$simulator_id" || true' EXIT
+
+          xcrun simctl boot "$simulator_id"
+          xcrun simctl bootstatus "$simulator_id" -b
+          make quality DESTINATION="platform=iOS Simulator,id=$simulator_id"
 
       - name: Upload test results after failure
         if: failure()
