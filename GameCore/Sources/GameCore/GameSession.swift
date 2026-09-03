@@ -63,13 +63,9 @@ public final class GameSession {
     phase = .countingDown(deadline: Date().addingTimeInterval(delay.timeInterval))
 
     selectionTask = Task { [weak self] in
-      do {
-        try await Task.sleep(for: delay)
-        guard !Task.isCancelled else { return }
-        self?.finishCountdown()
-      } catch {
-        // Cancellation is normal when a finger leaves early.
-      }
+      try? await Task.sleep(for: delay)
+      guard !Task.isCancelled else { return }
+      self?.finishCountdown()
     }
   }
 

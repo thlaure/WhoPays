@@ -7,6 +7,12 @@
         "fr" : { "stringUnit" : { "state" : "translated", "value" : "Qui paie ?" } }
       }
     },
+    "privacy.options" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Privacy options" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Options de confidentialité" } }
+      }
+    },
     "status.minimum_players" : {
       "localizations" : {
         "en" : { "stringUnit" : { "state" : "translated", "value" : "At least 2 players" } },
