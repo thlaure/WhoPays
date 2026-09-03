@@ -1,0 +1,60 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "action.play_again" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Play again" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Rejouer" } }
+      }
+    },
+    "brand" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Who pays?" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Qui paie ?" } }
+      }
+    },
+    "status.minimum_players" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "At least 2 players" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Au moins 2 joueurs" } }
+      }
+    },
+    "status.remove_fingers" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Remove fingers to play again" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Retirez les doigts pour rejouer" } }
+      }
+    },
+    "status.suspense" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Suspense…" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Suspense…" } }
+      }
+    },
+    "title.add_finger" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "One more finger!" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Encore un doigt !" } }
+      }
+    },
+    "title.hold_still" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Hold still…" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Ne bougez plus…" } }
+      }
+    },
+    "title.place_fingers" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Place your fingers" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Posez vos doigts" } }
+      }
+    },
+    "title.winner" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "You're paying!" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "C’est toi qui paies !" } }
+      }
+    }
+  },
+  "version" : "1.0"
+}
