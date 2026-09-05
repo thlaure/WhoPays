@@ -13,6 +13,12 @@
         "fr" : { "stringUnit" : { "state" : "translated", "value" : "Options de confidentialité" } }
       }
     },
+    "privacy.policy" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Privacy Policy" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Politique de confidentialité" } }
+      }
+    },
     "status.minimum_players" : {
       "localizations" : {
         "en" : { "stringUnit" : { "state" : "translated", "value" : "At least 2 players" } },
