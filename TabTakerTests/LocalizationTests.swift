@@ -8,6 +8,7 @@ final class LocalizationTests: XCTestCase {
       languageCode: "fr",
       expected: [
         "brand": "Qui paie ?",
+        "privacy.policy": "Politique de confidentialité",
         "status.minimum_players": "Au moins 2 joueurs",
         "status.remove_fingers": "Retirez les doigts pour rejouer",
         "status.suspense": "Suspense…",
@@ -24,6 +25,7 @@ final class LocalizationTests: XCTestCase {
       languageCode: "en",
       expected: [
         "brand": "Who pays?",
+        "privacy.policy": "Privacy Policy",
         "status.minimum_players": "At least 2 players",
         "status.remove_fingers": "Remove fingers to play again",
         "status.suspense": "Suspense…",

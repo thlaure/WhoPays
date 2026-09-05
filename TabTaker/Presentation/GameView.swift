@@ -56,16 +56,21 @@ struct GameView: View {
       )
       .allowsHitTesting(false)
 
-      if adManager.isPrivacyOptionsRequired {
-        VStack {
-          HStack {
-            Spacer()
-            PrivacyOptionsButton(action: adManager.presentPrivacyOptions)
-          }
+      VStack {
+        HStack {
           Spacer()
+
+          VStack(alignment: .trailing, spacing: 8) {
+            PrivacyPolicyLink()
+
+            if adManager.isPrivacyOptionsRequired {
+              PrivacyOptionsButton(action: adManager.presentPrivacyOptions)
+            }
+          }
         }
-        .padding(20)
+        Spacer()
       }
+      .padding(20)
     }
     .task {
       adManager.prepare()
