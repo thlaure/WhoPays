@@ -54,23 +54,25 @@ struct GameView: View {
         touchCount: session.touches.count,
         isCountingDown: isCountingDown
       )
+      .padding(.bottom, 44)
       .allowsHitTesting(false)
 
       VStack {
-        HStack {
-          Spacer()
-
-          VStack(alignment: .trailing, spacing: 8) {
-            PrivacyPolicyLink()
-
-            if adManager.isPrivacyOptionsRequired {
-              PrivacyOptionsButton(action: adManager.presentPrivacyOptions)
-            }
-          }
-        }
         Spacer()
+        PrivacyPolicyLink()
+          .padding(.bottom, 6)
       }
-      .padding(20)
+
+      if adManager.isPrivacyOptionsRequired {
+        VStack {
+          HStack {
+            Spacer()
+            PrivacyOptionsButton(action: adManager.presentPrivacyOptions)
+          }
+          Spacer()
+        }
+        .padding(20)
+      }
     }
     .task {
       adManager.prepare()
