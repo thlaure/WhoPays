@@ -272,6 +272,7 @@ Before submitting to the App Store:
 3. Complete App Store Connect's App Privacy questionnaire based on the final Google Mobile Ads configuration.
 
 The in-app privacy-options control appears automatically when Google requires it.
+The published policy is available at [thlaure.github.io/TabTaker/privacy-policy](https://thlaure.github.io/TabTaker/privacy-policy).
 
 ## Design principles
 

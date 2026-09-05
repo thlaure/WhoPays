@@ -1,18 +1,21 @@
 # TabTaker Privacy Policy
 
-**Last updated: September 3, 2026**
+**Last updated: September 5, 2026**
+
+This policy is published at
+[thlaure.github.io/TabTaker/privacy-policy](https://thlaure.github.io/TabTaker/privacy-policy).
 
 ## Controller and contact
 
 TabTaker is operated by Thomas Laure (the **Developer**). For privacy questions
-or requests, use the [project contact page](https://github.com/thlaure/WhoPays/issues).
+or requests, use the [project contact page](https://github.com/thlaure/TabTaker/issues).
 Do not post sensitive personal information in a public issue.
 
 ## Data processed
 
-The Developer does not operate a backend and does not directly collect, store,
-sell, or link personal data to a user. TabTaker has no accounts, authentication,
-user profiles, developer-operated analytics, or in-app purchases.
+The Developer does not operate a backend and does not itself collect, store,
+sell, or link personal data to a user. TabTaker has no accounts,
+authentication, user profiles, developer-operated analytics, or in-app purchases.
 
 TabTaker uses Google Mobile Ads to display occasional interstitial ads. When an
 ad is requested or displayed, Google and its advertising partners may process:
@@ -42,10 +45,11 @@ Where required, the App exposes a **Privacy options** control to review or
 withdraw applicable consent. Google advertising preferences can also be managed
 through [My Ad Center](https://myadcenter.google.com/).
 
-The Developer does not share or retain personal data. Advertising information is
-processed directly by Google Mobile Ads and its partners under Google’s policies
-and the user’s consent choices. Consent choices may be stored locally on the
-device by Google’s consent SDK for later launches.
+The Developer does not itself share or retain personal data. By requesting an
+ad, the App sends the information needed for ad delivery directly to Google
+Mobile Ads and its advertising partners, subject to Google’s policies and the
+user’s consent choices. Consent choices may be stored locally on the device by
+Google’s consent SDK for later launches.
 
 ## Rights, children, and changes
 
@@ -66,20 +70,23 @@ change. Material changes will be reflected by updating the date above.
 
 # Politique de confidentialité de TabTaker
 
-**Dernière mise à jour : 3 septembre 2026**
+**Dernière mise à jour : 5 septembre 2026**
+
+Cette politique est publiée à l’adresse
+[thlaure.github.io/TabTaker/privacy-policy](https://thlaure.github.io/TabTaker/privacy-policy).
 
 ## Responsable et contact
 
 TabTaker est exploitée par Thomas Laure (le **Développeur**). Pour toute
-question ou demande liée à la confidentialité, utilise la [page de contact du projet](https://github.com/thlaure/WhoPays/issues).
+question ou demande liée à la confidentialité, utilise la [page de contact du projet](https://github.com/thlaure/TabTaker/issues).
 Ne publie pas d’information personnelle sensible dans une issue publique.
 
 ## Données traitées
 
-Le Développeur n’exploite aucun backend et ne collecte, ne stocke, ne vend ni ne
-relie directement de données personnelles à un utilisateur. TabTaker ne propose
-ni compte, ni authentification, ni profil utilisateur, ni analytics exploité par
-le Développeur, ni achat intégré.
+Le Développeur n’exploite aucun backend et ne collecte, ne stocke, ne vend ni
+n’associe lui-même de données personnelles à un utilisateur. TabTaker ne
+propose ni compte, ni authentification, ni profil utilisateur, ni analytics
+exploité par le Développeur, ni achat intégré.
 
 TabTaker utilise Google Mobile Ads pour afficher occasionnellement des annonces
 interstitielles. Lorsqu’une annonce est demandée ou affichée, Google et ses
@@ -114,8 +121,9 @@ l’Application présente un contrôle **Options de confidentialité** pour cons
 ou retirer les choix applicables. Les préférences Google peuvent aussi être
 gérées dans [My Ad Center](https://myadcenter.google.com/).
 
-Le Développeur ne partage ni ne conserve de données personnelles. Les données
-publicitaires sont traitées directement par Google Mobile Ads et ses partenaires,
+Le Développeur ne partage ni ne conserve lui-même de données personnelles.
+Lorsqu’une annonce est demandée, l’Application transmet directement à Google
+Mobile Ads et à ses partenaires les informations nécessaires à sa diffusion,
 selon les politiques Google et les choix de consentement. Les choix peuvent être
 enregistrés localement par le SDK Google afin d’être respectés ultérieurement.
 
