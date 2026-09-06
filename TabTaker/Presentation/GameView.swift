@@ -5,6 +5,9 @@ import SwiftUI
 struct GameView: View {
   @State private var session: GameSession
   @State private var adManager: GoogleInterstitialAdManager
+  @State private var isMenuPresented = false
+  @State private var isAdsInfoPresented = false
+  @State private var pendingMenuAction: AppMenuAction?
 
   private let colors: [Color] = [
     .pink, .cyan, .orange, .green, .purple, .yellow, .indigo, .mint, .red, .blue,
@@ -54,25 +57,27 @@ struct GameView: View {
         touchCount: session.touches.count,
         isCountingDown: isCountingDown
       )
-      .padding(.bottom, 44)
       .allowsHitTesting(false)
 
       VStack {
-        Spacer()
-        PrivacyPolicyLink()
-          .padding(.bottom, 6)
-      }
-
-      if adManager.isPrivacyOptionsRequired {
-        VStack {
-          HStack {
-            Spacer()
-            PrivacyOptionsButton(action: adManager.presentPrivacyOptions)
-          }
+        HStack {
           Spacer()
+          AppMenuButton(action: { isMenuPresented = true })
         }
-        .padding(20)
+        Spacer()
       }
+      .padding(20)
+    }
+    .sheet(isPresented: $isMenuPresented, onDismiss: handleMenuDismissal) {
+      AppMenuView(
+        isAdPreferencesAvailable: adManager.isPrivacyOptionsRequired,
+        onSelect: { pendingMenuAction = $0 }
+      )
+    }
+    .alert(GameText.aboutAds, isPresented: $isAdsInfoPresented) {
+      Button(GameText.done, role: .cancel) {}
+    } message: {
+      Text(GameText.aboutAdsMessage)
     }
     .task {
       adManager.prepare()
@@ -90,6 +95,19 @@ struct GameView: View {
     .animation(.spring(response: 0.45, dampingFraction: 0.68), value: session.phase)
     .animation(.easeOut(duration: 0.18), value: session.touches)
     .persistentSystemOverlays(.hidden)
+  }
+
+  private func handleMenuDismissal() {
+    defer { pendingMenuAction = nil }
+
+    switch pendingMenuAction {
+    case .adPreferences:
+      adManager.presentPrivacyOptions()
+    case .aboutAds:
+      isAdsInfoPresented = true
+    case nil:
+      break
+    }
   }
 }
 

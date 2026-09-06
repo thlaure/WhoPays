@@ -7,16 +7,70 @@
         "fr" : { "stringUnit" : { "state" : "translated", "value" : "Qui paie ?" } }
       }
     },
-    "privacy.options" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Privacy options" } },
-        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Options de confidentialité" } }
-      }
-    },
     "privacy.policy" : {
       "localizations" : {
         "en" : { "stringUnit" : { "state" : "translated", "value" : "Privacy Policy" } },
         "fr" : { "stringUnit" : { "state" : "translated", "value" : "Politique de confidentialité" } }
+      }
+    },
+    "menu.ad_preferences" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Ad preferences" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Préférences publicitaires" } }
+      }
+    },
+    "menu.ad_preferences.description" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Manage consent and advertising choices" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Gérez le consentement et les choix publicitaires" } }
+      }
+    },
+    "menu.ad_preferences.unavailable" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Ad preferences are not required on this device" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Aucune préférence publicitaire n’est requise sur cet appareil" } }
+      }
+    },
+    "menu.about_ads" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "About ads" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "À propos des publicités" } }
+      }
+    },
+    "menu.about_ads.description" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Ads appear between games" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Les pubs apparaissent entre les parties" } }
+      }
+    },
+    "menu.about_ads.message" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "value", "value" : "Ads may appear between games, no more than once every four completed rounds." } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Les pubs peuvent apparaître entre les parties, au maximum une fois toutes les quatre parties terminées." } }
+      }
+    },
+    "menu.done" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Done" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Fermer" } }
+      }
+    },
+    "menu.open" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Open menu" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Ouvrir le menu" } }
+      }
+    },
+    "menu.privacy_policy.description" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Read how your data is handled" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Découvrez le traitement de vos données" } }
+      }
+    },
+    "menu.title" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Menu" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Menu" } }
       }
     },
     "status.minimum_players" : {
