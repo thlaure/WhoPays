@@ -67,6 +67,7 @@ struct GameView: View {
         Spacer()
       }
       .padding(20)
+      .offset(y: -12)
     }
     .sheet(isPresented: $isMenuPresented, onDismiss: handleMenuDismissal) {
       AppMenuView(
