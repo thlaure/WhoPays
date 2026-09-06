@@ -44,6 +44,7 @@ struct AppMenuView: View {
           systemImage: "hand.raised.fill"
         )
       }
+      .tint(.white)
       .accessibilityIdentifier("privacyPolicy")
 
       Divider()
@@ -59,6 +60,7 @@ struct AppMenuView: View {
             systemImage: "slider.horizontal.3"
           )
         }
+        .buttonStyle(.plain)
         .accessibilityIdentifier("adPreferences")
       } else {
         AppMenuRow(
@@ -82,13 +84,16 @@ struct AppMenuView: View {
           systemImage: "info.circle"
         )
       }
+      .buttonStyle(.plain)
       .accessibilityIdentifier("aboutAds")
 
       Button(GameText.done, action: dismiss.callAsFunction)
         .font(.headline)
         .padding(.top, 20)
+        .buttonStyle(.plain)
     }
     .padding(24)
+    .tint(.white)
     .presentationDetents([.medium])
     .presentationDragIndicator(.visible)
   }
